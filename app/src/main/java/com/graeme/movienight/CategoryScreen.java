@@ -4,18 +4,26 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.widget.TextView;
 
 public class CategoryScreen extends ActionBarActivity
 {
+  //---------------------------------------------------------------------------
+
+  private byte m_roundCount = 1;
+
+  //---------------------------------------------------------------------------
 
   @Override
   protected void onCreate( Bundle savedInstanceState )
   {
     super.onCreate( savedInstanceState );
     setContentView( R.layout.activity_category_screen );
+
+    SetRoundLabel();
   }
 
+  //---------------------------------------------------------------------------
 
   @Override
   public boolean onCreateOptionsMenu( Menu menu )
@@ -24,6 +32,8 @@ public class CategoryScreen extends ActionBarActivity
     getMenuInflater().inflate( R.menu.menu_category_screen, menu );
     return true;
   }
+
+  //---------------------------------------------------------------------------
 
   @Override
   public boolean onOptionsItemSelected( MenuItem item )
@@ -41,4 +51,16 @@ public class CategoryScreen extends ActionBarActivity
 
     return super.onOptionsItemSelected( item );
   }
+
+  //---------------------------------------------------------------------------
+
+  private void SetRoundLabel()
+  {
+    TextView lbl = (TextView)findViewById( R.id.lblRound );
+    lbl.setText( getString( R.string.round ) +
+                 ' ' +
+                 String.valueOf( m_roundCount )  );
+  }
+
+  //---------------------------------------------------------------------------
 }

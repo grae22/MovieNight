@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.content.Intent;
 
 public class StartScreen extends ActionBarActivity
 {
@@ -56,7 +58,7 @@ public class StartScreen extends ActionBarActivity
     //-- Get the name the player entered.
 
     // Get the textview & value.
-    android.widget.TextView txt = (android.widget.TextView)findViewById( R.id.txtName );
+    TextView txt = (TextView)findViewById( R.id.txtName );
     name = txt.getText().toString();
 
     // No name entered?
@@ -78,7 +80,10 @@ public class StartScreen extends ActionBarActivity
     }
 
     //-- Start the game.
-    setContentView( R.layout.activity_category_screen );
+    //setContentView( R.layout.activity_category_screen );
+
+    Intent intent = new Intent( this, CategoryScreen.class );
+    startActivity( intent );
   }
 
   //---------------------------------------------------------------------------

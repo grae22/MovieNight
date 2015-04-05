@@ -39,7 +39,8 @@
         android:ems="10"
         android:id="@+id/txtName"
         android:layout_gravity="center"
-        android:layout_weight="0"/>
+        android:layout_weight="0"
+        android:text="Player"/>
 
     </LinearLayout>
 
