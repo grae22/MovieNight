@@ -1,0 +1,11 @@
+<resources>
+  <string name="app_name">Movie Night</string>
+  <string name="action_settings">Settings</string>
+
+  <!-- Start screen -->
+  <string name="enter_your_name">ENTER YOUR NAME</string>
+  <string name="start_game">START GAME</string>
+  <string name="title_activity_category_screen">CategoryScreen</string>
+
+  <string name="hello_world">Hello world!</string>
+</resources>
