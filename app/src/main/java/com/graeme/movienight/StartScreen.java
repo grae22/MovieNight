@@ -80,8 +80,6 @@ public class StartScreen extends ActionBarActivity
     }
 
     //-- Start the game.
-    //setContentView( R.layout.activity_category_screen );
-
     Intent intent = new Intent( this, CategoryScreen.class );
     startActivity( intent );
   }

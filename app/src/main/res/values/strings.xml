@@ -5,9 +5,9 @@
   <!-- Start screen -->
   <string name="enter_your_name">ENTER YOUR NAME</string>
   <string name="start_game">START GAME</string>
-  <string name="title_activity_category_screen">CategoryScreen</string>
 
   <!-- Category screen -->
+  <string name="title_activity_category_screen">Movie Category</string>
   <string name="round">ROUND</string>
   <string name="tap_instruction">Tap to Spin for a Category</string>
 </resources>
