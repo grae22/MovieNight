@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.FrameLayout;
 import android.view.View;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Color;
@@ -145,21 +146,34 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
 
   private void update( final float deltaTimeInSec )
   {
+    // Update the spinning wheel.
     m_wheel.update( false, deltaTimeInSec );
 
+    // Update the text of the selected category.
     short categoryIndex = m_wheel.getCategoryIndex();
 
     if( categoryIndex >= 0 &&
         categoryIndex < m_categories.size() )
     {
+      m_lblCategory.setText( m_categories.elementAt( categoryIndex ) );
+    }
+
+    // Stopped spinning?
+    if( m_wheel.hasStoppedSpinning() )
+    {
       try
       {
-        m_lblCategory.setText( m_categories.elementAt( categoryIndex ) );
+        Thread.sleep( 2000 );
       }
       catch( Exception ex )
       {
-        int i = categoryIndex;
+        // Do nothing.
       }
+
+      //-- Go to the question screen.
+      Intent intent = new Intent( this, QuestionScreen.class );
+      intent.putExtra(  "Category", String.valueOf( m_lblCategory.getText() ) );
+      startActivity( intent );
     }
   }
 
@@ -169,16 +183,17 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
   {
     //-------------------------------------------------------------------------
 
-    private final int c_minAcceleration = 150;    // Min acceleration force when spinning.
-    private final int c_maxAcceleration = 300;    // Max acceleration force when spinning.
+    private final int c_minAcceleration = 200;    // Min acceleration force when spinning.
+    private final int c_maxAcceleration = 350;    // Max acceleration force when spinning.
     private final int c_accelerationTime = 2;     // Time to accelerate for before friction applied.
-    private final int c_frictionForce = 100;      // Friction force to slow the wheel.
+    private final int c_frictionForce = 150;      // Friction force to slow the wheel.
 
     private short m_angleStep = 0;                // Angle step size for each category.
     private float m_angle = 0.0f;                 // Current wheel angle.
     private float m_speed = 0.0f;                 // Current wheel speed.
     private short m_acceleration = 0;             // Current acceleration value.
     private float m_accelerationTime = 0.0f;      // Tracks how long wheel has been accelerating for.
+    private boolean m_stoppedSpinning = false;    // 'true' if the wheel was spinning and has stopped.
 
     //-------------------------------------------------------------------------
 
@@ -226,7 +241,7 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
         radius = (int) ( clipBounds.width() * 0.35 );
       }
 
-      // Draw a wedge for each category.
+      // Drawing.
       Paint paint = new Paint();
       paint.setAntiAlias( true );
 
@@ -406,6 +421,13 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
 
     //-------------------------------------------------------------------------
 
+    public boolean hasStoppedSpinning()
+    {
+      return m_stoppedSpinning;
+    }
+
+    //-------------------------------------------------------------------------
+
     // Called to start spinning the wheel, and also to update it's rotation
     // and cause a redraw.
 
@@ -438,6 +460,11 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
         else  // No longer accelerating - apply friction to slow the wheel.
         {
           m_speed -= ( c_frictionForce * deltaTimeInSec );
+
+          if( m_speed <= 0.0f )
+          {
+            m_stoppedSpinning = true;
+          }
         }
 
         // Update the angle based on speed.

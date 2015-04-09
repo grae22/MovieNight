@@ -10,4 +10,7 @@
   <string name="title_activity_category_screen">Movie Category</string>
   <string name="round">ROUND</string>
   <string name="tap_instruction">Tap to Spin for a Category</string>
+  <string name="title_activity_question_screen">Question</string>
+
+  <string name="hello_world">Hello world!</string>
 </resources>
