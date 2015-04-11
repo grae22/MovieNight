@@ -163,7 +163,7 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
     {
       try
       {
-        Thread.sleep( 2000 );
+        Thread.sleep( 1000 );
       }
       catch( Exception ex )
       {

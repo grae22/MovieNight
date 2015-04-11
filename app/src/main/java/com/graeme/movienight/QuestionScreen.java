@@ -20,7 +20,16 @@ public class QuestionScreen extends ActionBarActivity
     setContentView( R.layout.activity_question_screen );
 
     m_trivia.execute();
-    m_trivia.getQuestion( "Action" );
+
+    while( m_trivia.hasTriviaLoaded() == false &&
+           m_trivia.hasTriviaLoadFailed() == false );
+
+    if( m_trivia.hasTriviaLoadFailed() )
+    {
+      return;
+    }
+
+    Trivia.Question q = m_trivia.getQuestion( "Action" );
   }
 
   //---------------------------------------------------------------------------
