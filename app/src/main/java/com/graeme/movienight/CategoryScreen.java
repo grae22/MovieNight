@@ -23,7 +23,6 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
   //---------------------------------------------------------------------------
 
   private View m_categoryScreenRoot;
-  private byte m_roundCount = 1;
   private Vector<String> m_categories = new Vector<String>();
   private SpinningWheel m_wheel;
   private int m_wheelSpeed = 0;
@@ -92,7 +91,7 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
     TextView lbl = (TextView)findViewById( R.id.lblRound );
     lbl.setText( getString( R.string.round ) +
                  ' ' +
-                 String.valueOf( m_roundCount )  );
+                 String.valueOf( Game.Logic.GetRoundCount() )  );
   }
 
   //---------------------------------------------------------------------------
@@ -127,14 +126,14 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
   public void run()
   {
     // UI.
-    m_categoryScreenRoot.postDelayed( this, 50 );
+    m_categoryScreenRoot.postDelayed( this, 100 );
 
     // Logic.
-    update( 0.05f );
+    update( 0.1f );
 
     try
     {
-      Thread.sleep( 50 );
+      Thread.sleep( 100 );
     }
     catch( Exception ex )
     {
@@ -172,7 +171,7 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
 
       //-- Go to the question screen.
       Intent intent = new Intent( this, QuestionScreen.class );
-      intent.putExtra(  "Category", String.valueOf( m_lblCategory.getText() ) );
+      intent.putExtra( "Category", String.valueOf( m_lblCategory.getText() ) );
       startActivity( intent );
     }
   }
@@ -183,10 +182,10 @@ public class CategoryScreen extends ActionBarActivity implements Runnable
   {
     //-------------------------------------------------------------------------
 
-    private final int c_minAcceleration = 200;    // Min acceleration force when spinning.
-    private final int c_maxAcceleration = 350;    // Max acceleration force when spinning.
+    private final int c_minAcceleration = 300;    // Min acceleration force when spinning.
+    private final int c_maxAcceleration = 450;    // Max acceleration force when spinning.
     private final int c_accelerationTime = 2;     // Time to accelerate for before friction applied.
-    private final int c_frictionForce = 150;      // Friction force to slow the wheel.
+    private final int c_frictionForce = 200;      // Friction force to slow the wheel.
 
     private short m_angleStep = 0;                // Angle step size for each category.
     private float m_angle = 0.0f;                 // Current wheel angle.

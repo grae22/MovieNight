@@ -13,11 +13,25 @@ public class StartScreen extends ActionBarActivity
 {
   //---------------------------------------------------------------------------
 
+  private Trivia m_trivia = new Trivia();
+
+  //---------------------------------------------------------------------------
+
   @Override
   protected void onCreate( Bundle savedInstanceState )
   {
     super.onCreate( savedInstanceState );
     setContentView( R.layout.activity_start_screen );
+
+    m_trivia.execute();
+
+    while( Trivia.Data.hasTriviaLoaded() == false &&
+           Trivia.Data.hasTriviaLoadFailed() == false );
+
+    if( Trivia.Data.hasTriviaLoadFailed() )
+    {
+      return;
+    }
   }
 
   //---------------------------------------------------------------------------
@@ -80,8 +94,18 @@ public class StartScreen extends ActionBarActivity
     }
 
     //-- Start the game.
+    Game.Logic.NewGame();
+
     Intent intent = new Intent( this, CategoryScreen.class );
     startActivity( intent );
+  }
+
+  //---------------------------------------------------------------------------
+
+  @Override
+  public void onBackPressed()
+  {
+    // Do nothing.
   }
 
   //---------------------------------------------------------------------------

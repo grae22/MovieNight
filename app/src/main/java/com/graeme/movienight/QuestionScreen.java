@@ -1,15 +1,23 @@
 package com.graeme.movienight;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.graeme.movienight.Trivia.Question;
 
 public class QuestionScreen extends ActionBarActivity
 {
   //---------------------------------------------------------------------------
 
-  private Trivia m_trivia = new Trivia();
+  private Question m_question = null;
 
   //---------------------------------------------------------------------------
 
@@ -19,17 +27,38 @@ public class QuestionScreen extends ActionBarActivity
     super.onCreate( savedInstanceState );
     setContentView( R.layout.activity_question_screen );
 
-    m_trivia.execute();
+    // Get the category name.
+    String category = getIntent().getStringExtra( "Category" );
 
-    while( m_trivia.hasTriviaLoaded() == false &&
-           m_trivia.hasTriviaLoadFailed() == false );
+    // Get a question from the category.
+    m_question = Trivia.Data.getQuestion( category );
 
-    if( m_trivia.hasTriviaLoadFailed() )
+    if( m_question == null )
     {
       return;
     }
 
-    Trivia.Question q = m_trivia.getQuestion( "Action" );
+    // Show the movie's poster.
+    ImageView imgPoster = (ImageView)findViewById( R.id.imgPoster );
+    imgPoster.setImageDrawable( m_question.m_image );
+
+    // Update the round text.
+    TextView lbl = (TextView)findViewById( R.id.lblRound );
+    lbl.setText( getString( R.string.round ) +
+      ' ' +
+      String.valueOf( Game.Logic.GetRoundCount() )  );
+
+    // Set the question text.
+    TextView txtQuestion = (TextView)findViewById( R.id.lblQuestion );
+    txtQuestion.setText( m_question.m_text );
+
+    // Set up the answer buttons.
+    Button btnAnswer1 = (Button)findViewById( R.id.btnAnswer1 );
+    Button btnAnswer2 = (Button)findViewById( R.id.btnAnswer2 );
+    Button btnAnswer3 = (Button)findViewById( R.id.btnAnswer3 );
+    btnAnswer1.setText( "A : " + m_question.m_answers[ 0 ] );
+    btnAnswer2.setText( "B : " + m_question.m_answers[ 1 ] );
+    btnAnswer3.setText( "C : " + m_question.m_answers[ 2 ] );
   }
 
   //---------------------------------------------------------------------------
@@ -59,6 +88,15 @@ public class QuestionScreen extends ActionBarActivity
     }
 
     return super.onOptionsItemSelected( item );
+  }
+
+  //---------------------------------------------------------------------------
+
+  @Override
+  public void onBackPressed()
+  {
+    Intent intent = new Intent( this, StartScreen.class );
+    startActivity( intent );
   }
 
   //---------------------------------------------------------------------------
