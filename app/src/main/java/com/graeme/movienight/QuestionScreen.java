@@ -26,6 +26,7 @@ public class QuestionScreen extends ActionBarActivity implements Runnable
 
   private View m_questionScreenRoot = null;
   private Question m_question = null;
+  private short m_timeRemainingInMs = Game.Logic.c_timePerRoundInSec * 1000;
   private byte m_timeRemainingInSecs = Game.Logic.c_timePerRoundInSec;
 
   //---------------------------------------------------------------------------
@@ -96,15 +97,16 @@ public class QuestionScreen extends ActionBarActivity implements Runnable
 
   public void run()
   {
-    m_questionScreenRoot.postDelayed( this, 1010 );
-
     try
     {
       if( m_timeRemainingInSecs > 0 )
       {
-        Thread.sleep( 1000 );
-        
-        m_timeRemainingInSecs--;
+        m_questionScreenRoot.postDelayed( this, 100 );
+
+        Thread.sleep( 100 );
+
+        m_timeRemainingInMs -= 100;
+        m_timeRemainingInSecs = (byte)(m_timeRemainingInMs / 1000);
 
         ProgressBar pb = (ProgressBar)findViewById( R.id.pbTimer );
         pb.setProgress( m_timeRemainingInSecs );
@@ -195,10 +197,11 @@ public class QuestionScreen extends ActionBarActivity implements Runnable
 
     // Show a dialog to the player indicating the outcome.
     String text = ( isCorrect ? "Correct!" : "Incorrect!" );
+    String msg = ( Game.Logic.allowAnotherRound() ? "\nClick to start the next Round...\n" : "\nGame Over\n\nClick to see the leader-board...\n");
 
     AlertDialog.Builder dlg = new AlertDialog.Builder( this );
     dlg.setTitle( text );
-    dlg.setMessage( "\nClick to start the next Round...\n" );
+    dlg.setMessage( msg );
     dlg.setPositiveButton( "Next Round!", new DialogInterface.OnClickListener()
     {
       @Override
