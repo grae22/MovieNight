@@ -12,5 +12,13 @@
   <string name="tap_instruction">Tap to Spin for a Category</string>
   <string name="title_activity_question_screen">Question</string>
 
-  <string name="hello_world">Hello world!</string>
+  <!-- Loading screen -->
+  <string name="title_activity_loading">Movie Night</string>
+  <string name="loading">Loading...</string>
+
+  <!-- LeaderBoard -->
+  <string name="title_activity_leader_board_screen">Leader Board</string>
+  <string name="restart_game">RESTART GAME</string>
+
+
 </resources>

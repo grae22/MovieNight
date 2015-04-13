@@ -1325,14 +1325,15 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f09004c;
+        public static final int action_settings=0x7f090060;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int always=0x7f090016;
         public static final int beginning=0x7f090013;
-        public static final int btnAnswer1=0x7f090046;
-        public static final int btnAnswer2=0x7f090047;
-        public static final int btnAnswer3=0x7f090048;
-        public static final int btnStartGame=0x7f09004b;
+        public static final int btnAnswer1=0x7f09005a;
+        public static final int btnAnswer2=0x7f09005b;
+        public static final int btnAnswer3=0x7f09005c;
+        public static final int btnStartGame=0x7f09005f;
+        public static final int button=0x7f090053;
         public static final int checkbox=0x7f090029;
         public static final int collapseActionView=0x7f090017;
         public static final int decor_content_parent=0x7f09002f;
@@ -1350,11 +1351,24 @@ containing a value of this type.
         public static final int icon=0x7f090026;
         public static final int ifRoom=0x7f090018;
         public static final int image=0x7f090023;
-        public static final int imgPoster=0x7f090044;
+        public static final int imgPoster=0x7f090057;
         public static final int layCategoryScreenRoot=0x7f09003f;
+        public static final int layLoadingScreenRoot=0x7f090054;
+        public static final int layQuestionScreenRoot=0x7f090056;
         public static final int lblCategory=0x7f090043;
-        public static final int lblEnterYourName=0x7f090049;
-        public static final int lblQuestion=0x7f090045;
+        public static final int lblEnterYourName=0x7f09005d;
+        public static final int lblLoading=0x7f090055;
+        public static final int lblName1=0x7f090045;
+        public static final int lblName2=0x7f090048;
+        public static final int lblName3=0x7f09004b;
+        public static final int lblName4=0x7f09004e;
+        public static final int lblName5=0x7f090051;
+        public static final int lblPoints1=0x7f090046;
+        public static final int lblPoints2=0x7f090049;
+        public static final int lblPoints3=0x7f09004c;
+        public static final int lblPoints4=0x7f09004f;
+        public static final int lblPoints5=0x7f090052;
+        public static final int lblQuestion=0x7f090058;
         public static final int lblRound=0x7f090040;
         public static final int lblTapInstruction=0x7f090041;
         public static final int listMode=0x7f090009;
@@ -1363,6 +1377,7 @@ containing a value of this type.
         public static final int never=0x7f090019;
         public static final int none=0x7f09000e;
         public static final int normal=0x7f09000a;
+        public static final int pbTimer=0x7f090059;
         public static final int progress_circular=0x7f090005;
         public static final int progress_horizontal=0x7f090006;
         public static final int radio=0x7f09002b;
@@ -1383,8 +1398,13 @@ containing a value of this type.
         public static final int split_action_bar=0x7f090007;
         public static final int submit_area=0x7f09003c;
         public static final int tabMode=0x7f09000b;
+        public static final int textView=0x7f090044;
+        public static final int textView2=0x7f090047;
+        public static final int textView3=0x7f09004a;
+        public static final int textView4=0x7f09004d;
+        public static final int textView5=0x7f090050;
         public static final int title=0x7f090027;
-        public static final int txtName=0x7f09004a;
+        public static final int txtName=0x7f09005e;
         public static final int up=0x7f090008;
         public static final int useLogo=0x7f090012;
         public static final int withText=0x7f09001a;
@@ -1419,14 +1439,18 @@ containing a value of this type.
         public static final int abc_search_view=0x7f040014;
         public static final int abc_simple_dropdown_hint=0x7f040015;
         public static final int activity_category_screen=0x7f040016;
-        public static final int activity_question_screen=0x7f040017;
-        public static final int activity_start_screen=0x7f040018;
-        public static final int support_simple_spinner_dropdown_item=0x7f040019;
+        public static final int activity_leader_board_screen=0x7f040017;
+        public static final int activity_loading=0x7f040018;
+        public static final int activity_question_screen=0x7f040019;
+        public static final int activity_start_screen=0x7f04001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f04001b;
     }
     public static final class menu {
         public static final int menu_category_screen=0x7f0d0000;
-        public static final int menu_question_screen=0x7f0d0001;
-        public static final int menu_start_screen=0x7f0d0002;
+        public static final int menu_leader_board_screen=0x7f0d0001;
+        public static final int menu_loading=0x7f0d0002;
+        public static final int menu_question_screen=0x7f0d0003;
+        public static final int menu_start_screen=0x7f0d0004;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
@@ -1451,12 +1475,15 @@ containing a value of this type.
         public static final int action_settings=0x7f0b0010;
         public static final int app_name=0x7f0b0011;
         public static final int enter_your_name=0x7f0b0012;
-        public static final int hello_world=0x7f0b0013;
-        public static final int round=0x7f0b0014;
-        public static final int start_game=0x7f0b0015;
-        public static final int tap_instruction=0x7f0b0016;
-        public static final int title_activity_category_screen=0x7f0b0017;
-        public static final int title_activity_question_screen=0x7f0b0018;
+        public static final int loading=0x7f0b0013;
+        public static final int restart_game=0x7f0b0014;
+        public static final int round=0x7f0b0015;
+        public static final int start_game=0x7f0b0016;
+        public static final int tap_instruction=0x7f0b0017;
+        public static final int title_activity_category_screen=0x7f0b0018;
+        public static final int title_activity_leader_board_screen=0x7f0b0019;
+        public static final int title_activity_loading=0x7f0b001a;
+        public static final int title_activity_question_screen=0x7f0b001b;
     }
     public static final class style {
         public static final int Animation_AppCompat_DropDownUp=0x7f0c0000;

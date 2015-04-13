@@ -1,3 +1,7 @@
+/*
+  Logic for the start-screen.
+*/
+
 package com.graeme.movienight;
 
 import android.app.AlertDialog;
@@ -13,25 +17,11 @@ public class StartScreen extends ActionBarActivity
 {
   //---------------------------------------------------------------------------
 
-  private Trivia m_trivia = new Trivia();
-
-  //---------------------------------------------------------------------------
-
   @Override
   protected void onCreate( Bundle savedInstanceState )
   {
     super.onCreate( savedInstanceState );
     setContentView( R.layout.activity_start_screen );
-
-    m_trivia.execute();
-
-    while( Trivia.Data.hasTriviaLoaded() == false &&
-           Trivia.Data.hasTriviaLoadFailed() == false );
-
-    if( Trivia.Data.hasTriviaLoadFailed() )
-    {
-      return;
-    }
   }
 
   //---------------------------------------------------------------------------
@@ -94,7 +84,8 @@ public class StartScreen extends ActionBarActivity
     }
 
     //-- Start the game.
-    Game.Logic.NewGame();
+    Game.Logic.m_playerName = name;
+    Game.Logic.newGame();
 
     Intent intent = new Intent( this, CategoryScreen.class );
     startActivity( intent );

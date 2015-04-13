@@ -20,8 +20,6 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -35,6 +33,23 @@
         <activity
             android:name="com.graeme.movienight.QuestionScreen"
             android:label="@string/title_activity_question_screen"
+            android:parentActivityName="com.graeme.movienight.StartScreen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.graeme.movienight.StartScreen" />
+        </activity>
+        <activity
+            android:name="com.graeme.movienight.Loading"
+            android:label="@string/title_activity_loading" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.graeme.movienight.LeaderBoardScreen"
+            android:label="@string/title_activity_leader_board_screen"
             android:parentActivityName="com.graeme.movienight.StartScreen" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

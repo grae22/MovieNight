@@ -1,3 +1,11 @@
+/*
+  Handles retrieving the categories, questions, answers and posters.
+
+  TODO: At the very least, the relevant poster should be loaded just before displaying
+        the question... currently we're loading them all on startup (hence the long
+        load time).
+*/
+
 package com.graeme.movienight;
 
 import android.graphics.drawable.Drawable;
